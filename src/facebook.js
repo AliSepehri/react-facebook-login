@@ -102,9 +102,27 @@ class FacebookLogin extends React.Component {
     )
   }
 
+  renderWithImage = () => {
+    return (
+      <div>
+         <button
+            className={this.props.cssClass + ' ' + this.props.size}
+            onClick={this.click}>
+            <img src={this.props.image}/>
+        </button>
+
+        <style dangerouslySetInnerHTML={{ __html: styles }}></style>
+      </div>
+    )
+  }
+
   render() {
     if (this.props.icon) {
       return this.renderWithFontAwesome();
+    }
+
+    if (this.props.image) {
+      return this.renderWithImage();
     }
 
     return (
@@ -114,7 +132,7 @@ class FacebookLogin extends React.Component {
             onClick={this.click}>
           {this.props.textButton}
         </button>
-        
+
         <style dangerouslySetInnerHTML={{ __html: styles }}></style>
       </div>
     );
